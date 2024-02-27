@@ -25,12 +25,12 @@ productAddButtons.forEach(element => {
         const productsId = Array.from(cartProducts.children).find(i => i.getAttribute('data-id') === id);
 
         if (!productsId) {
-        cartProducts.insertAdjacentHTML(
-            'beforeEnd',
-            `<div class="cart__product" data-id="${id}"><img class="cart__product-image" src=${srcImage}><div class="cart__product-count">${count.textContent}</div></div>`);
+            cartProducts.insertAdjacentHTML(
+                'beforeEnd',
+                `<div class="cart__product" data-id="${id}"><img class="cart__product-image" src=${srcImage}><div class="cart__product-count">${count.textContent}</div></div>`);
         } else {
-        const cartProductCount = productsId.querySelector('.cart__product-count'); 
-        cartProductCount.textContent = +cartProductCount.textContent + +count.textContent;
+            const cartProductCount = productsId.querySelector('.cart__product-count'); 
+            cartProductCount.textContent = +cartProductCount.textContent + +count.textContent;
         }
     })
 })
