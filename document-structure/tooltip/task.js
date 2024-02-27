@@ -11,7 +11,9 @@ links.forEach(elem => {
 
         if(this.target.title === tooltip.textContent){
             tooltip.classList.toggle('tooltip_active');
-        } else  tooltip.classList.add('tooltip_active')
+        } else {
+            tooltip.classList.add('tooltip_active')
+        } 
 
         
         tooltip.innerText = this.target.title;
