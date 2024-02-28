@@ -1,11 +1,27 @@
-const rotatorCases = Array.from(document.querySelectorAll(".rotator__case"));
+const rotator = document.querySelector(".rotator");
 
-const timer = setInterval(() => {
-    let index = rotatorCases.findIndex(item => item.classList.contains("rotator__case_active"));
-    if (index < rotatorCases.length - 1) {
-        rotatorCases[index].classList.remove("rotator__case_active");  
-    } else {
-        index = -1;  
-    } 
-    rotatorCases[index + 1].classList.add("rotator__case_active");    
-}, 1000)
+const rotatorCases = document.querySelectorAll(".rotator__case");
+
+function clearAllCases() {
+    rotatorCases.forEach((rotatorCase) =>
+        rotatorCase.classList.remove("rotator__case_active")
+    );
+}
+
+setInterval(() => {
+    clearAllCases();
+    const rotatorCase = getCurrentCase();
+    rotatorCase.classList.add("rotator__case_active");
+}, 1000);
+
+let currentIndex = 0;
+const maxCaseIndex = rotatorCases.length;
+
+function getCurrentCase() {
+    if (currentIndex === maxCaseIndex) {
+        currentIndex = 0;
+    }
+    const temp = rotatorCases[currentIndex];
+    currentIndex += 1;
+    return temp;
+}
